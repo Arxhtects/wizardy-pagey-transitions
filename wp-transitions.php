@@ -5,7 +5,7 @@ Plugin URL: https://www.archtects.co.uk
 Description: Wordpress Page Transitions
 Author: Scott Chambers
 Author URL: https://www.archtects.co.uk
-version: 0.51 Beta
+version: 0.60 Beta
 */
 
 //add the retrived input and apply it to code
@@ -14,7 +14,8 @@ function hook_header() { ?>
         var usersetting = "<?php echo get_option('postSettings'); ?>";
         var ajaxload = "<?php echo get_option('ajaxSettings'); ?>";
     </script>
-<?php }
+    <div id='wpt_loading'></div> <?php //Div is set here. It will be first item added to the body tag. WP Moves it.
+}
 
 function include_jquery() {
     #Check if Jquery Has been Set
@@ -22,6 +23,7 @@ function include_jquery() {
         wp_enqueue_script( 'jquery_include', 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js', array( 'jquery' ) );
     }
     wp_enqueue_script('javascript_code', '/wp-content/plugins/wizardy-pagey-transitions/assets/js/javascript.js');
+    wp_enqueue_style('style_code', '/wp-content/plugins/wizardy-pagey-transitions/assets/css/wpt-style.css');
 }
 
 #Adds plugin to menu
