@@ -5,12 +5,15 @@ Plugin URL: https://www.archtects.co.uk
 Description: Wordpress Page Transitions
 Author: Scott Chambers
 Author URL: https://www.archtects.co.uk
-version: 0.4 Beta
+version: 0.51 Beta
 */
 
 //add the retrived input and apply it to code
 function hook_header() { ?>
-    <script>var usersetting = "<?php echo get_option('postSettings'); ?>";</script>
+    <script>
+        var usersetting = "<?php echo get_option('postSettings'); ?>";
+        var ajaxload = "<?php echo get_option('ajaxSettings'); ?>";
+    </script>
 <?php }
 
 function include_jquery() {
@@ -37,7 +40,12 @@ if ( !function_exists("wp_transitions_page")) {
         <form method="post" action="options.php">
             <?php settings_fields('infoSettings'); ?>
             <?php do_settings_sections('infoSettings'); ?>
-            <input type="text" name="postSettings" value="<?php echo get_option('postSettings'); ?>"/>
+            Off: <input name="postSettings" type="radio" value="0" <?php checked( '0', get_option( 'postSettings' ) ); ?> /><br />
+            On: <input name="postSettings" type="radio" value="1" <?php checked( '1', get_option( 'postSettings' ) ); ?> />
+            <hr style="margin-top: 20px;">
+            <h5>Alpha: Ajax Settings For Loading Pages Ascyn [Very Alpha]</h5>
+            Off: <input name="ajaxSettings" type="radio" value="0" <?php checked( '0', get_option( 'ajaxSettings' ) ); ?> /><br />
+            On: <input name="ajaxSettings" type="radio" value="1" <?php checked( '1', get_option( 'ajaxSettings' ) ); ?> />
             <?php submit_button(); ?>
         </form>
     <?php }
@@ -46,6 +54,7 @@ if ( !function_exists("wp_transitions_page")) {
 if( !function_exists("update_postSettings")) {
     function update_postSettings() {
         register_setting('infoSettings', 'postSettings');
+        register_setting('infoSettings', 'ajaxSettings');
     }
 }
 
