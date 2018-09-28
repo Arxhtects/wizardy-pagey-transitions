@@ -1,18 +1,26 @@
 #wpt_loading {
     position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
+    width: 100%;
+    height: 100vh;
     z-index: 9999;
-    background-color: white;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
+    background-color: #f2f3f4;
+    -webkit-transition: all 0.48s ease;
+    -moz-transition: all 0.48s ease;
+    -o-transition: all 0.48s ease;
+    transition: all 0.48s ease;
 }
 
 .show-opacity {
     opacity: 0;
     pointer-events: none;
+}
+
+.show-slide-down {
+    bottom:0;
+    height: 0vh !important;
+}
+
+.show-slide-left {
+    right: 0;
+    width: 0 !important;
 }

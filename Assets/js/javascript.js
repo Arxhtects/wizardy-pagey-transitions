@@ -2,13 +2,13 @@ $(document).ready(function() {
     //class name set here
     var class_name = "transition_link"
     var pageWrap = "page" //wordpress wrapper div id
-    console.log(usersetting);
+    //console.log(usersetting);
     //console.log(ajaxload);
-
-    window.setTimeout(function(){ //Timeout function so adding class isnt so quick
-        $("#wpt_loading").addClass('show-opacity');
-    }, 350);
-
+    if (ajaxload != "1") {
+        window.setTimeout(function(){ //Timeout function so adding class isnt so quick
+            $("#wpt_loading").addClass(usersetting); //comes from var set from phpsettings
+        }, 250);
+    }
 
     $("a").each(function() { //Check to see if link has target blank
         if ($("this").attr("target" == "_blank")) {
@@ -24,13 +24,19 @@ $(document).ready(function() {
     $("a[href*='#'").removeClass(class_name);
 
     $("."+class_name).click(function() {//page transition after onclick function
-        if (ajaxload == "1") { //if settings set to on do following
+        if (usersetting != "0") {
             var addressValue = $(this).attr("href"); //gets links value
-            $.ajax({url: addressValue, success: function(result){
-                $("#"+pageWrap).html(result);//load page into the main div as html
-            }});
-            return false //forces link to not work
+            if (ajaxload == "1") { //if settings set to on do following
+                $.ajax({url: addressValue, success: function(result){
+                    $("#"+pageWrap).html(result);//load page into the main div as html
+                }});
+            } else {
+                window.setTimeout(function(){
+                    window.location.href=addressValue; //wait till animation finished
+                }, 480);
+            $("#wpt_loading").removeClass(usersetting);
+            }
+        return false //forces link to not work
         }
-        $("#wpt_loading").removeClass('show-opacity');
     });    
 });
