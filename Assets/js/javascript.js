@@ -30,6 +30,10 @@ $(document).ready(function() {
                 $.ajax({url: addressValue, success: function(result){
                     $("#"+pageWrap).html(result);//load page into the main div as html
                 }});
+                $("#wpt_loading").removeClass(usersetting);
+                window.setTimeout(function(){ //Timeout function so adding class isnt so quick
+                    $("#wpt_loading").addClass(usersetting); //comes from var set from phpsettings
+                }, 480);
             } else {
                 window.setTimeout(function(){
                     window.location.href=addressValue; //wait till animation finished
