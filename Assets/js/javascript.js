@@ -2,8 +2,10 @@ $(document).ready(function() {
     //class name set here
     var class_name = "transition_link"
     var pageWrap = "page" //wordpress wrapper div id
-    //console.log(usersetting);
-    //console.log(ajaxload);
+
+    if (usersetting.match("^split-mid")) { $("#wpt_loading").addClass("split_ver_wpt_load"); } //Different css class for split div
+    if (usersetting.match("^split-left")) { $("#wpt_loading").addClass("split_hor_wpt_load"); }
+
     if (ajaxload != "1") {
         window.setTimeout(function(){ //Timeout function so adding class isnt so quick
             $("#wpt_loading").addClass(usersetting); //comes from var set from phpsettings

@@ -39,17 +39,25 @@ if ( !function_exists("wp_transitions")) {
     }
 }
 
+function load_admin_style() {
+    wp_enqueue_style('style_code', '/wp-content/plugins/wizardy-pagey-transitions/assets/css/wpt-admin-style.css');
+}
+
 #creates page
 if ( !function_exists("wp_transitions_page")) { //Sets up the option page
     function wp_transitions_page() { ?>
         <h1>Wizardy Pagey Transitions</h1>
-        <form method="post" action="options.php">
+        <form id="wp_transition_settings_form" method="post" action="options.php">
             <?php settings_fields('infoSettings'); //Creates the fields to save to ?> 
             <?php do_settings_sections('infoSettings'); ?>
-            Off: <input name="postSettings" type="radio" value="0" <?php checked('0', get_option('postSettings')); ?> /><br />
-            Fade Out: <input name="postSettings" type="radio" value="show-opacity" <?php checked('show-opacity', get_option('postSettings')); ?> /><br />
-            Slide Down: <input name="postSettings" type="radio" value="show-slide-down" <?php checked('show-slide-down', get_option('postSettings')); ?> /> <br />
-            Slide Left: <input name="postSettings" type="radio" value="show-slide-left" <?php checked('show-slide-left', get_option('postSettings')); ?> />
+            <label>Off: <input name="postSettings" type="radio" value="0" <?php checked('0', get_option('postSettings')); ?> /></label> <br />
+            <label>Fade Out: <input name="postSettings" type="radio" value="show-opacity" <?php checked('show-opacity', get_option('postSettings')); ?> /></label> <br />
+            <label>Slide Down: <input name="postSettings" type="radio" value="show-slide-down" <?php checked('show-slide-down', get_option('postSettings')); ?> /></label> <br />
+            <label>Slide Left: <input name="postSettings" type="radio" value="show-slide-left" <?php checked('show-slide-left', get_option('postSettings')); ?> /></label> <br />
+            <label>Split In Half Horizontally: <input name="postSettings" type="radio" value="split-mid-middle" <?php checked('split-mid-middle', get_option('postSettings')); ?> /></label> <br />
+            <label>Double Slide Up: <input name="postSettings" type="radio" value="split-mid-down" <?php checked('split-mid-down', get_option('postSettings')); ?> /></label> <br />
+            <label>Split In Half Vertically: <input name="postSettings" type="radio" value="split-left-middle" <?php checked('split-left-middle', get_option('postSettings')); ?> /></label> <br />
+            
             <hr style="margin-top: 20px;">
             <h5>Alpha: Ajax Settings For Loading Pages Ascyn [Very Alpha(Doesnt work with trasitions currently)]</h5>
             Off: <input name="ajaxSettings" type="radio" value="0" <?php checked('0', get_option( 'ajaxSettings')); ?> /><br />
@@ -81,4 +89,5 @@ add_action('wp_head', 'hook_header');
 add_action('wp_enqueue_scripts', 'include_jquery');
 add_action('admin_menu', 'wp_transitions');
 add_action('admin_init', 'update_postSettings');
+add_action('admin_head', 'load_admin_style');
 ?>
