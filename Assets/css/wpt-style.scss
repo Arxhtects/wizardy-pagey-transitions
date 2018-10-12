@@ -80,15 +80,6 @@ html, body {
     }
 }
 
-.split-mid-down {
-    top: 0;
-    height: 0 !important;
-    transition-delay: $transitionDelay;
-    &:after {
-        top: -50vh !important;
-    }    
-}
-
 .split-left-middle {
     width: 0 !important;
     &:after {

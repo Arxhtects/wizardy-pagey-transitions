@@ -1,3 +1,81 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
+#wpwrap {
+  font-family: 'Montserrat', sans-serif; }
 
+h1 {
+  text-align: center;
+  margin-top: 30px;
+  font-weight: 100; }
+
+#wp_transition_settings_form {
+  width: 100%; }
+  #wp_transition_settings_form input[type=radio] {
+    display: none; }
+  #wp_transition_settings_form label {
+    cursor: context-menu;
+    text-align: left; }
+  #wp_transition_settings_form #top_settings_wrapper {
+    width: 1200px;
+    text-align: center;
+    margin: 0 auto; }
+    @media (max-width: 1200px) {
+      #wp_transition_settings_form #top_settings_wrapper {
+        width: 100%; } }
+  #wp_transition_settings_form .wpt_switch_wrap {
+    display: inline-table;
+    background: #EEEEEE;
+    padding: 35px;
+    width: 100px;
+    border-radius: 8px;
+    width: 50px;
+    margin: 20px; }
+  #wp_transition_settings_form .switch {
+    cursor: grab;
+    position: relative;
+    width: 50px;
+    height: 40px; }
+    #wp_transition_settings_form .switch:before {
+      content: '';
+      position: absolute;
+      transition: all 0.48s ease;
+      left: 0;
+      border-radius: 50%;
+      height: 27px;
+      width: 27px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #CFD8DC;
+      z-index: 2; }
+    #wp_transition_settings_form .switch:after {
+      content: '';
+      position: absolute;
+      transition: all 0.48s ease;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 20px;
+      background: white;
+      border-radius: 20px;
+      z-index: 1; }
+  #wp_transition_settings_form .on:before {
+    background: #AB47BC !important;
+    left: calc(100% - 27px) !important; }
+  #wp_transition_settings_form .on:after {
+    background: #CE93D8 !important; }
+
+.dark {
+  background: #242B36;
+  color: white !important; }
+  .dark h1 {
+    color: white !important; }
+  .dark .wpt_switch_wrap {
+    background: #2D353E !important; }
+  .dark input[type=submit] {
+    background-color: #AB47BC;
+    transition: all 0.48s ease;
+    border: 0 !important;
+    box-shadow: 0 !important; }
+    .dark input[type=submit]:hover {
+      background-color: #CE93D8; }
 
 /*# sourceMappingURL=wpt-admin-style.css.map */

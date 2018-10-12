@@ -1,3 +1,113 @@
+//vars
+$transition:        all 0.48s ease;
+$darkColor:         #AB47BC;
+$lightColor:        #CE93D8;
+$offColor:          #CFD8DC;
+$panelBackground:   #EEEEEE;
+
+$darkThemebg:       #242B36;
+$darkThemepanelpg:  #2D353E;
+
+//form style
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+#wpwrap {
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 30px;
+    font-weight: 100;
+}
+
 #wp_transition_settings_form {
+    width: 100%;
+    input[type=radio] {
+        display: none;
+    } 
+    label {
+        cursor: context-menu;
+        text-align: left;
+    }
+    #top_settings_wrapper {
+        width: 1200px;
+        text-align: center;
+        margin: 0 auto;
+        @media(max-width: 1200px) {
+            width: 100%;
+        }
+    }
+    .wpt_switch_wrap { 
+        display: inline-table;
+        background: $panelBackground;    
+        padding: 35px;
+        width: 100px;
+        border-radius: 8px;
+        width: 50px;
+        margin: 20px;
+    }
+    .switch {
+        cursor: grab;
+        position: relative;
+        width: 50px;
+        height: 40px;
+        &:before {
+            content: '';
+            position: absolute;
+            transition: $transition;
+            left: 0;
+            border-radius: 50%;
+            height: 27px;
+            width: 27px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: $offColor;
+            z-index: 2;
+        }
+        &:after {
+            content: '';
+            position: absolute;
+            transition: $transition;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 20px;
+            background: white;
+            border-radius: 20px;
+            z-index: 1;
+        }
+    }
         
+    .on {
+        &:before {
+            background: $darkColor !important;
+            left: calc(100% - 27px) !important;
+        }
+        &:after {
+            background: $lightColor !important;
+        }
+    }
+
+}
+
+//dark admin theme settings 
+.dark {
+    background: $darkThemebg;
+    color: white !important;
+    h1 {
+        color: white !important;
+    }
+    .wpt_switch_wrap { 
+        background: $darkThemepanelpg !important;
+    }
+    input[type=submit] {
+        background-color: $darkColor;
+        transition: $transition;
+        border: 0 !important;
+        box-shadow: 0 !important;
+        &:hover {
+            background-color: $lightColor;
+        }
+    }
 }

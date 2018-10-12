@@ -5,7 +5,7 @@ Plugin URL: https://www.archtects.co.uk
 Description: Wordpress Page Transitions
 Author: Archtects
 Author URL: https://www.archtects.co.uk
-version: 0.62.1 Beta
+version: 0.68.5 Beta
 */
 
 //add the retrived input and apply it to code
@@ -39,8 +39,17 @@ if ( !function_exists("wp_transitions")) {
     }
 }
 
-function load_admin_style() {
-    wp_enqueue_style('style_code', '/wp-content/plugins/wizardy-pagey-transitions/assets/css/wpt-admin-style.css');
+function load_admin_style($hook) {
+    $current_screen = get_current_screen();
+    if ( strpos($current_screen->base, 'wp_transitions_page') === false) {
+        return;
+    } else {
+        if ( !wp_script_is('jquery', 'enqueued')) { #TODO ADD JQUERY TO ASSSETS
+            wp_enqueue_script( 'jquery_include', 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js', array( 'jquery' ) );
+        }
+        wp_enqueue_style('style_code', '/wp-content/plugins/wizardy-pagey-transitions/assets/css/wpt-admin-style.css');
+        wp_enqueue_script('javascript_code', '/wp-content/plugins/wizardy-pagey-transitions/assets/js/admin-javascript.js');
+    }
 }
 
 #creates page
@@ -50,18 +59,17 @@ if ( !function_exists("wp_transitions_page")) { //Sets up the option page
         <form id="wp_transition_settings_form" method="post" action="options.php">
             <?php settings_fields('infoSettings'); //Creates the fields to save to ?> 
             <?php do_settings_sections('infoSettings'); ?>
-            <label>Off: <input name="postSettings" type="radio" value="0" <?php checked('0', get_option('postSettings')); ?> /></label> <br />
-            <label>Fade Out: <input name="postSettings" type="radio" value="show-opacity" <?php checked('show-opacity', get_option('postSettings')); ?> /></label> <br />
-            <label>Slide Down: <input name="postSettings" type="radio" value="show-slide-down" <?php checked('show-slide-down', get_option('postSettings')); ?> /></label> <br />
-            <label>Slide Left: <input name="postSettings" type="radio" value="show-slide-left" <?php checked('show-slide-left', get_option('postSettings')); ?> /></label> <br />
-            <label>Split In Half Horizontally: <input name="postSettings" type="radio" value="split-mid-middle" <?php checked('split-mid-middle', get_option('postSettings')); ?> /></label> <br />
-            <label>Double Slide Up: <input name="postSettings" type="radio" value="split-mid-down" <?php checked('split-mid-down', get_option('postSettings')); ?> /></label> <br />
-            <label>Split In Half Vertically: <input name="postSettings" type="radio" value="split-left-middle" <?php checked('split-left-middle', get_option('postSettings')); ?> /></label> <br />
-            
-            <hr style="margin-top: 20px;">
+            <div id="top_settings_wrapper">
+                <div class="wpt_switch_wrap"><label class="wpt_label_">Turn Off: <input class="radio_set" name="postSettings" type="radio" value="0" <?php checked('0', get_option('postSettings')); ?> /><div class="switch"></div></label></div>
+                <div class="wpt_switch_wrap"><label class="wpt_label_">Fade Out: <input class="radio_set" name="postSettings" type="radio" value="show-opacity" <?php checked('show-opacity', get_option('postSettings')); ?> /><div class="switch"></div></label></div>
+                <div class="wpt_switch_wrap"><label class="wpt_label_">Slide Down: <input class="radio_set" name="postSettings" type="radio" value="show-slide-down" <?php checked('show-slide-down', get_option('postSettings')); ?> /><div class="switch"></div></label></div>
+                <div class="wpt_switch_wrap"><label class="wpt_label_">Slide Left: <input class="radio_set" name="postSettings" type="radio" value="show-slide-left" <?php checked('show-slide-left', get_option('postSettings')); ?> /><div class="switch"></div></label></div>
+                <div class="wpt_switch_wrap"><label class="wpt_label_">Horizontal Split: <input class="radio_set" name="postSettings" type="radio" value="split-mid-middle" <?php checked('split-mid-middle', get_option('postSettings')); ?> /><div class="switch"></div></label></div>
+                <div class="wpt_switch_wrap"><label class="wpt_label_">Vertical Split: <input class="radio_set" name="postSettings" type="radio" value="split-left-middle" <?php checked('split-left-middle', get_option('postSettings')); ?> /><div class="switch"></div></label></div> 
+            </div>
             <h5>Alpha: Ajax Settings For Loading Pages Ascyn [Very Alpha(Doesnt work with trasitions currently)]</h5>
-            Off: <input name="ajaxSettings" type="radio" value="0" <?php checked('0', get_option( 'ajaxSettings')); ?> /><br />
-            On: <input name="ajaxSettings" type="radio" value="1" <?php checked('1', get_option('ajaxSettings')); ?> />
+            <label class="wpt_ajax_label_">Off: <input class="radio_ajax_set" name="ajaxSettings" type="radio" value="0" <?php checked('0', get_option( 'ajaxSettings')); ?> /><div class="switch"></div></label> <br />
+            <label class="wpt_ajax_label_">On: <input class="radio_ajax_set" name="ajaxSettings" type="radio" value="1" <?php checked('1', get_option('ajaxSettings')); ?> /><div class="switch"></div></label> 
             <?php submit_button(); ?>
         </form>
     <?php }
