@@ -1,11 +1,37 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat");
 #wpwrap {
+  transition: all 0.48s ease;
   font-family: 'Montserrat', sans-serif; }
+  #wpwrap input[type=checkbox] {
+    display: none; }
+  #wpwrap input[type=submit] {
+    margin-left: 20px;
+    background-color: #AB47BC;
+    border: 0;
+    box-shadow: 0px 0px 0px;
+    text-shadow: 0px 0px 0px;
+    line-height: 0px;
+    padding: 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    transition: all 0.48s ease; }
+    #wpwrap input[type=submit]:hover {
+      background-color: #CE93D8; }
+  #wpwrap .updated {
+    border-left-color: #AB47BC !important; }
+  #wpwrap .submit {
+    display: block; }
+
+#lbltxt {
+  text-align: center !important; }
 
 h1 {
   text-align: center;
   margin-top: 30px;
   font-weight: 100; }
+
+h4 {
+  margin-left: 20px; }
 
 #wp_transition_settings_form {
   width: 100%; }
@@ -22,6 +48,7 @@ h1 {
       #wp_transition_settings_form #top_settings_wrapper {
         width: 100%; } }
   #wp_transition_settings_form .wpt_switch_wrap {
+    transition: all 0.48s ease;
     display: inline-table;
     background: #EEEEEE;
     padding: 35px;
@@ -46,6 +73,8 @@ h1 {
       transform: translateY(-50%);
       background: #CFD8DC;
       z-index: 2; }
+    #wp_transition_settings_form .switch:hover:before {
+      background-color: #CE93D8; }
     #wp_transition_settings_form .switch:after {
       content: '';
       position: absolute;
@@ -66,16 +95,24 @@ h1 {
 .dark {
   background: #242B36;
   color: white !important; }
+  .dark .updated {
+    background: #2D353E; }
   .dark h1 {
     color: white !important; }
   .dark .wpt_switch_wrap {
     background: #2D353E !important; }
-  .dark input[type=submit] {
-    background-color: #AB47BC;
-    transition: all 0.48s ease;
-    border: 0 !important;
-    box-shadow: 0 !important; }
-    .dark input[type=submit]:hover {
-      background-color: #CE93D8; }
+  .dark .switch:after {
+    background-color: #656867 !important; }
+  .dark .switch:before {
+    background-color: #f1f1f1 !important; }
+  .dark .switch:hover:before {
+    background-color: #CE93D8 !important; }
+  .dark #footer-upgrade, .dark #footer-thankyou {
+    color: white !important; }
+
+.darktoggle_switch .switch {
+  position: fixed !important;
+  bottom: 40px;
+  right: 30px; }
 
 /*# sourceMappingURL=wpt-admin-style.css.map */

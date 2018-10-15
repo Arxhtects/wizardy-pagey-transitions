@@ -5,13 +5,14 @@ Plugin URL: https://www.archtects.co.uk
 Description: Wordpress Page Transitions
 Author: Archtects
 Author URL: https://www.archtects.co.uk
-version: 0.68.5 Beta
+version: 0.68.6 Beta
 */
 
 //add the retrived input and apply it to code
 function hook_header() { 
     $postSettings = get_option('postSettings'); 
     $ajaxLoad = get_option('ajaxSettings');
+    $darktoggle = get_option('darktoggle');
     ?>
     <script>
         var usersetting = "<?php echo $postSettings; ?>";
@@ -55,6 +56,7 @@ function load_admin_style($hook) {
 #creates page
 if ( !function_exists("wp_transitions_page")) { //Sets up the option page
     function wp_transitions_page() { ?>
+    
         <h1>Wizardy Pagey Transitions</h1>
         <form id="wp_transition_settings_form" method="post" action="options.php">
             <?php settings_fields('infoSettings'); //Creates the fields to save to ?> 
@@ -67,9 +69,9 @@ if ( !function_exists("wp_transitions_page")) { //Sets up the option page
                 <div class="wpt_switch_wrap"><label class="wpt_label_">Horizontal Split: <input class="radio_set" name="postSettings" type="radio" value="split-mid-middle" <?php checked('split-mid-middle', get_option('postSettings')); ?> /><div class="switch"></div></label></div>
                 <div class="wpt_switch_wrap"><label class="wpt_label_">Vertical Split: <input class="radio_set" name="postSettings" type="radio" value="split-left-middle" <?php checked('split-left-middle', get_option('postSettings')); ?> /><div class="switch"></div></label></div> 
             </div>
-            <h5>Alpha: Ajax Settings For Loading Pages Ascyn [Very Alpha(Doesnt work with trasitions currently)]</h5>
-            <label class="wpt_ajax_label_">Off: <input class="radio_ajax_set" name="ajaxSettings" type="radio" value="0" <?php checked('0', get_option( 'ajaxSettings')); ?> /><div class="switch"></div></label> <br />
-            <label class="wpt_ajax_label_">On: <input class="radio_ajax_set" name="ajaxSettings" type="radio" value="1" <?php checked('1', get_option('ajaxSettings')); ?> /><div class="switch"></div></label> 
+            <h4>Alpha: Ajax Settings For Loading Pages Ascyn [Very Alpha(Doesnt work with trasitions currently)]</h4><br />
+            <div class="wpt_switch_wrap"><label class="wpt_ajax_label_"><p id="lbltxt"></p><input class="radio_ajax_set" name="ajaxSettings" type="checkbox" value="1" <?php checked('1', get_option('ajaxSettings')); ?> /><div class="switch"></div></label></div>
+            <label class="darktoggle_switch"><input id="toggle_dark" name="darktoggle" type="checkbox" value="dark" <?php checked('dark', get_option('darktoggle')); ?> /><div class="switch"></div><label>
             <?php submit_button(); ?>
         </form>
     <?php }
@@ -79,6 +81,7 @@ if( !function_exists("update_postSettings")) { //Saves the settings that come fr
     function update_postSettings() {
         register_setting('infoSettings', 'postSettings');
         register_setting('infoSettings', 'ajaxSettings');
+        register_setting('infoSettings', 'darktoggle');
     }
 }
 
