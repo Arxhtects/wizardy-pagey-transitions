@@ -25,14 +25,14 @@ $(document).ready(function() {
     $("a[href*='#'").removeClass(class_name);
 
     $("."+class_name).click(function() {//page transition after onclick function
+        var addressValue = $(this).attr("href"); //gets links value
         if (usersetting != "0" && ajaxload != "1") {
-            var addressValue = $(this).attr("href"); //gets links value
                 window.setTimeout(function(){
                     window.location.href=addressValue; //wait till animation finished
                 }, 480);
             $("#wpt_loading").removeClass(usersetting);
         } else if(ajaxload == "1") {
-            $.ajax({url: addressValue, success: function(result){
+            $.ajax({async: true, url: addressValue, success: function(result){
                 $("#"+pageWrap).html(result); //load page into the main div as html
             }});
             $("#wpt_loading").removeClass(usersetting);
