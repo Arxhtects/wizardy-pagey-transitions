@@ -32,9 +32,10 @@ $(document).ready(function() {
                 }, 480);
             $("#wpt_loading").removeClass(usersetting);
         } else if(ajaxload == "1") {
-            $.ajax({async: true, url: addressValue, success: function(result){
-                $("#"+pageWrap).html(result); //load page into the main div as html
-            }});
+                $.ajax({async: true, url: addressValue, success: function(result){
+                    $("#"+pageWrap).html(result); //load page into the main div as html
+                }});
+                
             $("#wpt_loading").removeClass(usersetting);
         }
     return false //forces link to not work

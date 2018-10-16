@@ -162,6 +162,13 @@ h4 {
     }
 }
 
+//admin left menu arrow
+.dark_arrow {
+    &:after {
+        border-right-color: $darkThemebg !important;
+    }
+}   
+
 //toggle switch for dark and light theme
 .darktoggle_switch {
     .switch {

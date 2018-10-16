@@ -110,6 +110,9 @@ h4 {
   .dark #footer-upgrade, .dark #footer-thankyou {
     color: white !important; }
 
+.dark_arrow:after {
+  border-right-color: #242B36 !important; }
+
 .darktoggle_switch .switch {
   position: fixed !important;
   bottom: 40px;
