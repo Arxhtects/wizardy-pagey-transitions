@@ -40,13 +40,15 @@ h4 {
   #wp_transition_settings_form label {
     cursor: context-menu;
     text-align: left; }
-  #wp_transition_settings_form #top_settings_wrapper {
+  #wp_transition_settings_form #top_settings_wrapper, #wp_transition_settings_form #loading_settings_wrapper {
     width: 1200px;
     text-align: center;
     margin: 0 auto; }
     @media (max-width: 1200px) {
-      #wp_transition_settings_form #top_settings_wrapper {
+      #wp_transition_settings_form #top_settings_wrapper, #wp_transition_settings_form #loading_settings_wrapper {
         width: 100%; } }
+    #wp_transition_settings_form #top_settings_wrapper h4, #wp_transition_settings_form #loading_settings_wrapper h4 {
+      text-align: left; }
   #wp_transition_settings_form .wpt_switch_wrap {
     transition: all 0.48s ease;
     display: inline-table;

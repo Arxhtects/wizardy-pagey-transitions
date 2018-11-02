@@ -87,3 +87,27 @@ html, body {
     }
 }
 
+//loading circles
+#wpt_load_anim {
+    position: fixed;
+    z-index: 99999999;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    &.basic-circle {
+        box-sizing: border-box;
+        left: calc(50% - 37.5px);
+        height: 75px;
+        width: 75px;
+        border-radius: 50%;
+        border: solid 5px black;
+        border-bottom: solid 5px transparent;
+        -webkit-animation: spin 0.9s infinite; /* Safari 4+ */
+        -moz-animation:    spin 0.9s infinite; /* Fx 5+ */
+        -o-animation:      spin 0.9s infinite; /* Opera 12+ */
+        animation:         spin 0.9s infinite; /* IE 10+, Fx 29+ */
+    }
+}
+
+//imported scss files
+@import 'keyframes';

@@ -64,12 +64,15 @@ h4 {
         cursor: context-menu;
         text-align: left;
     }
-    #top_settings_wrapper {
+    #top_settings_wrapper, #loading_settings_wrapper {
         width: 1200px;
         text-align: center;
         margin: 0 auto;
         @media(max-width: 1200px) {
             width: 100%;
+        }
+        h4 { 
+            text-align: left;
         }
     }
     .wpt_switch_wrap { 

@@ -6,9 +6,13 @@ $(document).ready(function() {
 
     if (usersetting.match("^split-mid")) { $("#wpt_loading").addClass("split_ver_wpt_load"); } //Different css class for split div
     if (usersetting.match("^split-left")) { $("#wpt_loading").addClass("split_hor_wpt_load"); }
+    if (loadingsettings != "0") {
+        $('#wpt_load_anim').addClass(loadingsettings);
+    }
 
     window.setTimeout(function(){ //Timeout function so adding class isnt so quick
         $("#wpt_loading").addClass(usersetting); //comes from var set from phpsettings
+        $("#wpt_load_anim").removeClass(loadingsettings);
     }, 250);
     
     $("a").each(function() { //Check to see if link has target blank
@@ -18,7 +22,7 @@ $(document).ready(function() {
             $("a").addClass(class_name);
         }
     });
-
+    
     //remove all classes from admin divs/admin links/anchor links.   
     $("#wpadminbar a").removeClass(class_name);
     $("a[href*='wp-']").removeClass(class_name);

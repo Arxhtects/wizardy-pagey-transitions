@@ -25,6 +25,14 @@ jQuery(document).ready(function() {
             $(this).children(".switch").addClass("on");
         }
     });
+    
+    $(".wpt_load_label_").click(function() { 
+        $(".wpt_load_label_").children(".switch").removeClass("on");
+        if ($(this).children("input:checked").length > 0) {
+            $(this).children(".switch").addClass("on");
+        }
+    });
+
     $(".wpt_ajax_label_").click(function() {
         $(".wpt_ajax_label_").children(".switch").removeClass("on");
         if ($(this).children("input:checked").length > 0) {
