@@ -5,7 +5,7 @@ Plugin URL: https://www.archtects.co.uk
 Description: Wordpress Page Transitions
 Author: Archtects
 Author URL: https://www.archtects.co.uk
-version: 0.68.9 Beta
+version: 0.69.1 Beta
 */
 
 //add the retrived input and apply it to code
@@ -76,11 +76,21 @@ if ( !function_exists("wp_transitions_page")) { //Sets up the option page
                     <div class="wpt_switch_wrap"><label class="wpt_label_">Vertical Split: <input class="radio_set" name="postSettings" type="radio" value="split-left-middle" <?php checked('split-left-middle', get_option('postSettings')); ?> /><div class="switch"></div></label></div> 
                 </fieldset>
             </div>
-            <div id="loading_settings_wrapper">
+            <div class="loading_settings_wrapper">
             <h4>Loading Circles</h4>
                 <fieldset id="loadingSettings">
                     <div class="wpt_switch_wrap"><label class="wpt_load_label_">Turn Off: <input class="radio_set" name="loadingSettings" type="radio" value="0" <?php checked('0', get_option('loadingSettings')); ?> /><div class="switch"></div></label></div>
                     <div class="wpt_switch_wrap"><label class="wpt_load_label_">Basic Circle: <input class="radio_set" name="loadingSettings" type="radio" value="basic-circle" <?php checked('basic-circle', get_option('loadingSettings')); ?> /><div class="switch"></div></label></div>
+                    <div class="wpt_switch_wrap"><label class="wpt_load_label_">Two Halves: <input class="radio_set" name="loadingSettings" type="radio" value="two-halfs-circle" <?php checked('two-halfs-circle', get_option('loadingSettings')); ?> /><div class="switch"></div></label></div>
+                    <div class="wpt_switch_wrap"><label class="wpt_load_label_">One Quater: <input class="radio_set" name="loadingSettings" type="radio" value="one-quater-circle" <?php checked('one-quater-circle', get_option('loadingSettings')); ?> /><div class="switch"></div></label></div>
+                    <div class="wpt_switch_wrap"><label class="wpt_load_label_">Split Circle: <input class="radio_set" name="loadingSettings" type="radio" value="split-circle" <?php checked('split-circle', get_option('loadingSettings')); ?> /><div class="switch"></div></label></div>
+                    <div class="wpt_switch_wrap"><label class="wpt_load_label_">Bolt Turn: <input class="radio_set" name="loadingSettings" type="radio" value="split-ring" <?php checked('split-ring', get_option('loadingSettings')); ?> /><div class="switch"></div></label></div>
+                </fieldset>
+            </div>
+            <div class="loading_settings_wrapper">
+            <h4>Loading Bars</h4>
+                <fieldset id="loadingSettings">
+                    <div class="wpt_switch_wrap"><label class="wpt_load_label_">Three Bars: <input class="radio_set" name="loadingSettings" type="radio" value="three-bars" <?php checked('three-bars', get_option('loadingSettings')); ?> /><div class="switch"></div></label></div>
                 </fieldset>
             </div>
             <h4>Alpha: Ajax Page load Settings</h4><br />

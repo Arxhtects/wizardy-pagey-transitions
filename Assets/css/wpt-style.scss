@@ -3,6 +3,7 @@ $transition:        all 0.48s ease;
 $transitionDelay:   0.24s !important;
 $bgColor:           #f2f3f4;
 $sbgColor:          #f2f3f4;
+$loadingColor:      #000;
 
 //html,body overlay
 html, body {
@@ -100,12 +101,142 @@ html, body {
         height: 75px;
         width: 75px;
         border-radius: 50%;
-        border: solid 5px black;
+        border: solid 5px $loadingColor;
         border-bottom: solid 5px transparent;
         -webkit-animation: spin 0.9s infinite; /* Safari 4+ */
         -moz-animation:    spin 0.9s infinite; /* Fx 5+ */
         -o-animation:      spin 0.9s infinite; /* Opera 12+ */
         animation:         spin 0.9s infinite; /* IE 10+, Fx 29+ */
+    }
+    &.two-halfs-circle {
+        box-sizing: border-box;
+        left: calc(50% - 37.5px);
+        height: 75px;
+        width: 75px;
+        border-radius: 50%;
+        border: solid 5px $loadingColor;
+        border-bottom: solid 5px transparent;
+        border-top: solid 5px transparent;
+        -webkit-animation: spin 0.9s infinite; /* Safari 4+ */
+        -moz-animation:    spin 0.9s infinite; /* Fx 5+ */
+        -o-animation:      spin 0.9s infinite; /* Opera 12+ */
+        animation:         spin 0.9s infinite; /* IE 10+, Fx 29+ */
+    }
+    &.one-quater-circle {
+        box-sizing: border-box;
+        left: calc(50% - 37.5px);
+        height: 75px;
+        width: 75px;
+        border-radius: 50%;
+        border: 5px solid rgba(0,0,0,0.2);
+        border-bottom: 5px solid $loadingColor;
+        -webkit-animation: spin 0.9s infinite; /* Safari 4+ */
+        -moz-animation:    spin 0.9s infinite; /* Fx 5+ */
+        -o-animation:      spin 0.9s infinite; /* Opera 12+ */
+        animation:         spin 0.9s infinite; /* IE 10+, Fx 29+ */
+    }
+    &.split-circle {
+        box-sizing: border-box;
+        left: calc(50% - 37.5px);
+        height: 75px;
+        width: 75px;
+        border-radius: 50%;
+        border: 5px solid transparent;
+        border-bottom: 5px solid $loadingColor;
+        -webkit-animation: spin 0.9s infinite; /* Safari 4+ */
+        -moz-animation:    spin 0.9s infinite; /* Fx 5+ */
+        -o-animation:      spin 0.9s infinite; /* Opera 12+ */
+        animation:         spin 0.9s infinite; /* IE 10+, Fx 29+ */
+        &:before {
+            content: '';
+            position: absolute;
+            box-sizing: border-box;
+            left: calc(50% - 31px);
+            height: 62px;
+            width: 62px;
+            border-radius: 50%;
+            border: 5px solid transparent;
+            border-top: 5px solid $loadingColor;
+            -webkit-animation: spin 0.9s infinite; /* Safari 4+ */
+            -moz-animation:    spin 0.9s infinite; /* Fx 5+ */
+            -o-animation:      spin 0.9s infinite; /* Opera 12+ */
+            animation:         spin 0.9s infinite; /* IE 10+, Fx 29+ */
+        }
+    }
+    &.split-ring { 
+        box-sizing: border-box;
+        left: calc(50% - 37.5px);
+        height: 75px;
+        width: 75px;
+        border-radius: 50%;
+        border: 5px solid transparent;
+        border-bottom: 5px solid $loadingColor;
+        border-top: 5px solid $loadingColor;
+        -webkit-animation: spin 0.9s infinite; /* Safari 4+ */
+        -moz-animation:    spin 0.9s infinite; /* Fx 5+ */
+        -o-animation:      spin 0.9s infinite; /* Opera 12+ */
+        animation:         spin 0.9s infinite; /* IE 10+, Fx 29+ */
+        &:before {
+            content: '';
+            position: absolute;
+            box-sizing: border-box;
+            left: calc(50% - 31px);
+            height: 60px;
+            width: 60px;
+            top: 2px;
+            border-radius: 50%;
+            border: 5px solid transparent;
+            border-bottom: 5px solid $loadingColor;
+            border-top: 5px solid $loadingColor;
+            -webkit-animation: spin 0.9s infinite; /* Safari 4+ */
+            -moz-animation:    spin 0.9s infinite; /* Fx 5+ */
+            -o-animation:      spin 0.9s infinite; /* Opera 12+ */
+            animation:         spin 0.9s infinite; /* IE 10+, Fx 29+ */
+            animation-direction: reverse;
+        }
+    }
+    &.three-bars {
+        box-sizing: border-box;
+        left: calc(50% - 7.5px);
+        height: 40px;
+        width: 10px;
+        background-color: $loadingColor;
+        top: 50%;
+        transform: translateY(-50%);
+        -webkit-animation: resize_height 0.9s infinite; /* Safari 4+ */
+        -moz-animation:    resize_height 0.9s infinite; /* Fx 5+ */
+        -o-animation:      resize_height 0.9s infinite; /* Opera 12+ */
+        animation:         resize_height 0.9s infinite; /* IE 10+, Fx 29+ */
+        animation-delay: 0.1s;
+        &:before {
+            content: '';
+            position: absolute;
+            left: calc(50% + 7.5px);
+            height: 40px;
+            width: 10px;
+            background-color: $loadingColor;
+            top: 50%;
+            transform: translateY(-50%);
+            -webkit-animation: resize_height 0.9s infinite; /* Safari 4+ */
+            -moz-animation:    resize_height 0.9s infinite; /* Fx 5+ */
+            -o-animation:      resize_height 0.9s infinite; /* Opera 12+ */
+            animation:         resize_height 0.9s infinite; /* IE 10+, Fx 29+ */
+            animation-delay: 0.2s;
+        }
+        &:after {
+            content: '';
+            position: absolute;
+            left: calc(50% - 17px);
+            height: 40px;
+            width: 10px;
+            background-color: $loadingColor;
+            top: 50%;
+            transform: translateY(-50%);
+            -webkit-animation: resize_height 0.9s infinite; /* Safari 4+ */
+            -moz-animation:    resize_height 0.9s infinite; /* Fx 5+ */
+            -o-animation:      resize_height 0.9s infinite; /* Opera 12+ */
+            animation:         resize_height 0.9s infinite; /* IE 10+, Fx 29+ */
+        }
     }
 }
 

@@ -1,0 +1,42 @@
+@-webkit-keyframes spin {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+@-moz-keyframes spin {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+@-o-keyframes spin {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+@keyframes spin {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+@-webkit-keyframes resize_height {
+  0%, 100% {
+    height: 40px; }
+  50% {
+    height: 10px; } }
+@-moz-keyframes resize_height {
+  0%, 100% {
+    height: 40px; }
+  50% {
+    height: 10px; } }
+@-o-keyframes resize_height {
+  0%, 100% {
+    height: 40px; }
+  50% {
+    height: 10px; } }
+@keyframes resize_height {
+  0%, 100% {
+    height: 40px; }
+  50% {
+    height: 10px; } }
+
+/*# sourceMappingURL=keyframes.css.map */

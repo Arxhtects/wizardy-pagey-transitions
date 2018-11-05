@@ -36,8 +36,10 @@ $(document).ready(function() {
                 }, 480);
         } else if(ajaxload == "1") {
             $.ajax({async: true, url: addressValue, success: function(result) {
-               $("body").html(result); //load page into the main div as html
-               window.history.pushState("", "Title", addressValue);
+                window.setTimeout(function(){
+                    $("body").html(result); //load page into the main div as html
+                    window.history.pushState("", "Title", addressValue);
+                }, 480);
             }}); 
         }
     $("#wpt_loading").removeClass(usersetting);

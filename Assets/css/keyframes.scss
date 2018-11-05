@@ -1,16 +1,43 @@
+//variables
+$default_deg: rotate(0deg);
+$full_deg: rotate(360deg);
+
+$default_height: 40px;
+$resize_height: 10px;
+
+//spin
 @-webkit-keyframes spin {
-    0%   { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0%   { transform: $default_deg; }
+    100% { transform: $full_deg; }
 }
 @-moz-keyframes spin {
-    0%   { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0%   { transform: $default_deg; }
+    100% { transform: $full_deg; }
 }
 @-o-keyframes spin {
-    0%   { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0%   { transform: $default_deg; }
+    100% { transform: $full_deg; }
 }
 @keyframes spin {
-    0%   { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0%   { transform: $default_deg; }
+    100% { transform: $full_deg; }
 }
+
+//resize
+@-webkit-keyframes resize_height {
+    0%, 100%   { height: $default_height; }
+    50% { height: $resize_height; }
+}
+@-moz-keyframes resize_height {
+    0%, 100%   { height: $default_height; }
+    50% { height: $resize_height; }
+}
+@-o-keyframes resize_height {
+    0%, 100%   { height: $default_height; }
+    50% { height: $resize_height; }
+}
+@keyframes resize_height {
+    0%, 100%    { height: $default_height; }
+    50% { height: $resize_height; }
+}
+
