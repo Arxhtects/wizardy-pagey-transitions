@@ -68,7 +68,7 @@ if ( !function_exists("wp_transitions_page")) { //Sets up the option page
             <div id="top_settings_wrapper">
             <h4>Loading Transitions</h4>
                 <fieldset id="postSettings">
-                    <div class="wpt_switch_wrap"><label class="wpt_label_">Turn Off: <input class="radio_set" name="postSettings" type="radio" value="0" <?php checked('0', get_option('postSettings')); ?> /><div class="switch"></div></label></div>
+                    <div class="wpt_switch_wrap"><label class="wpt_label_">Turn Off: <input class="radio_set" name="postSettings" type="radio" value="0" <?php checked('0', get_option('postSettings')); ?> /><div class="switch"></div></label><div class="expand_colorselect">Coming soon!</span></div>
                     <div class="wpt_switch_wrap"><label class="wpt_label_">Fade Out: <input class="radio_set" name="postSettings" type="radio" value="show-opacity" <?php checked('show-opacity', get_option('postSettings')); ?> /><div class="switch"></div></label></div>
                     <div class="wpt_switch_wrap"><label class="wpt_label_">Slide Down: <input class="radio_set" name="postSettings" type="radio" value="show-slide-down" <?php checked('show-slide-down', get_option('postSettings')); ?> /><div class="switch"></div></label></div>
                     <div class="wpt_switch_wrap"><label class="wpt_label_">Slide Left: <input class="radio_set" name="postSettings" type="radio" value="show-slide-left" <?php checked('show-slide-left', get_option('postSettings')); ?> /><div class="switch"></div></label></div>
