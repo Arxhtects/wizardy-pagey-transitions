@@ -184,5 +184,15 @@ h4 {
 .expand_colorselect {
     max-height: 0px;
     overflow: hidden;
-    transition: 0.4s; 
+    transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+    &.expand {
+        max-height: 1000px;
+        transition: max-height 1s ease-in-out;
+        overflow: inherit;
+    }
+    input {
+        width: 180%;
+        position: relative;
+        left: -20px;
+    }
 }

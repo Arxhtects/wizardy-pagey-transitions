@@ -11,6 +11,7 @@ jQuery(document).ready(function() {
 
     if($(".radio_set:checked").length > 0) { //check to see if it has already been checked
         $(".radio_set:checked").siblings(".switch").addClass("on");
+        $(".radio_set:checked").parent().next(".expand_colorselect").addClass("expand");
     }
     if($(".radio_ajax_set:checked").length > 0) { //check to see if the setting has already been checked
         $(".radio_ajax_set:checked").siblings(".switch").addClass("on");
@@ -21,15 +22,19 @@ jQuery(document).ready(function() {
 
     $(".wpt_label_").click(function() { 
         $(".wpt_label_").children(".switch").removeClass("on");
+        $(".wpt_label_").siblings(".expand_colorselect").removeClass("expand");
         if ($(this).children("input:checked").length > 0) {
             $(this).children(".switch").addClass("on");
+            $(this).siblings(".expand_colorselect").addClass("expand");
         }
     });
     
     $(".wpt_load_label_").click(function() { 
         $(".wpt_load_label_").children(".switch").removeClass("on");
+        $(".wpt_load_label_").siblings(".expand_colorselect").removeClass("expand");
         if ($(this).children("input:checked").length > 0) {
             $(this).children(".switch").addClass("on");
+            $(this).siblings(".expand_colorselect").addClass("expand");
         }
     });
 
