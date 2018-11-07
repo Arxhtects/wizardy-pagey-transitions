@@ -14,7 +14,33 @@ function hook_header() {
     $loadingSettings = get_option('loadingSettings');
     $ajaxLoad = get_option('ajaxSettings');
     $darktoggle = get_option('darktoggle');
-    ?>
+    $transitionBgColor = get_option('transitionBgColor');
+    $loadBgColor = get_option('loadBgColor');
+    if ($loadBgColor == null || $loadBgColor == "") {
+        $loadBgColor = "#000";
+    }
+    if ($transitionBgColor == null || $transitionBgColor == "") {
+        $transitionBgColor = "#f2f3f4";
+    }?>
+    
+        
+    <?php if($postSettings != "0") { ?>
+        <style>
+            <?php if($loadingSettings != "0") { ?>
+            .<?php echo $loadingSettings; ?> {
+                border: 5px solid <?php echo $loadBgColor; ?>;
+            }
+            <?php } ?>
+            #wpt_loading {
+                background: <?php echo $transitionBgColor; ?> !important;
+            }
+            <?php if(strpos($postSettings, 'split') !== false) { ?>
+                .bgoverride::after {
+                    background-color: <?php echo $transitionBgColor; ?> !important;
+                }
+           <?php } ?>
+        </style>
+    <?php  } ?>
     <script>
         var usersetting = "<?php echo $postSettings; ?>";
         var loadingsettings = "<?php echo $loadingSettings; ?>"
@@ -69,33 +95,37 @@ if ( !function_exists("wp_transitions_page")) { //Sets up the option page
             <h4>Loading Transitions</h4>
                 <fieldset id="postSettings">
                     <div class="wpt_switch_wrap"><label class="wpt_label_">Turn Off: <input class="radio_set" name="postSettings" type="radio" value="0" <?php checked('0', get_option('postSettings')); ?> /><div class="switch"></div></label></div>
-                    <div class="wpt_switch_wrap"><label class="wpt_label_">Fade Out: <input class="radio_set" name="postSettings" type="radio" value="show-opacity" <?php checked('show-opacity', get_option('postSettings')); ?> /><div class="switch"></div></label><div class="expand_colorselect">Color:<br /><input placeholder="f2f3f4" /></div></div>
-                    <div class="wpt_switch_wrap"><label class="wpt_label_">Slide Down: <input class="radio_set" name="postSettings" type="radio" value="show-slide-down" <?php checked('show-slide-down', get_option('postSettings')); ?> /><div class="switch"></div></label><div class="expand_colorselect">Coming soon!</div></div>
-                    <div class="wpt_switch_wrap"><label class="wpt_label_">Slide Left: <input class="radio_set" name="postSettings" type="radio" value="show-slide-left" <?php checked('show-slide-left', get_option('postSettings')); ?> /><div class="switch"></div></label><div class="expand_colorselect">Coming soon!</div></div>
-                    <div class="wpt_switch_wrap"><label class="wpt_label_">Horizontal Split: <input class="radio_set" name="postSettings" type="radio" value="split-mid-middle" <?php checked('split-mid-middle', get_option('postSettings')); ?> /><div class="switch"></div></label><div class="expand_colorselect">Coming soon!</div></div>
-                    <div class="wpt_switch_wrap"><label class="wpt_label_">Vertical Split: <input class="radio_set" name="postSettings" type="radio" value="split-left-middle" <?php checked('split-left-middle', get_option('postSettings')); ?> /><div class="switch"></div></label><div class="expand_colorselect">Coming soon!</div></div> 
+                    <div class="wpt_switch_wrap"><label class="wpt_label_">Fade Out: <input class="radio_set" name="postSettings" type="radio" value="show-opacity" <?php checked('show-opacity', get_option('postSettings')); ?> /><div class="switch"></div></label><div class="expand_colorselect"><strong>Color:</strong><br /><input class="transitionBgColor" type="text" name="transitionBgColor" value="<?php echo get_option('transitionBgColor'); ?>"/></div></div>
+                    <div class="wpt_switch_wrap"><label class="wpt_label_">Slide Down: <input class="radio_set" name="postSettings" type="radio" value="show-slide-down" <?php checked('show-slide-down', get_option('postSettings')); ?> /><div class="switch"></div></label><div class="expand_colorselect"><strong>Color:</strong><br /><input class="transitionBgColor" type="text" name="transitionBgColor" value="<?php echo get_option('transitionBgColor'); ?>"/></div></div>
+                    <div class="wpt_switch_wrap"><label class="wpt_label_">Slide Left: <input class="radio_set" name="postSettings" type="radio" value="show-slide-left" <?php checked('show-slide-left', get_option('postSettings')); ?> /><div class="switch"></div></label><div class="expand_colorselect"><strong>Color:</strong><br /><input class="transitionBgColor" type="text" name="transitionBgColor" value="<?php echo get_option('transitionBgColor'); ?>"/></div></div>
+                    <div class="wpt_switch_wrap"><label class="wpt_label_">Horizontal Split: <input class="radio_set" name="postSettings" type="radio" value="split-mid-middle" <?php checked('split-mid-middle', get_option('postSettings')); ?> /><div class="switch"></div></label><div class="expand_colorselect"><strong>Color:</strong><br /><input class="transitionBgColor" type="text" name="transitionBgColor" value="<?php echo get_option('transitionBgColor'); ?>"/></div></div>
+                    <div class="wpt_switch_wrap"><label class="wpt_label_">Vertical Split: <input class="radio_set" name="postSettings" type="radio" value="split-left-middle" <?php checked('split-left-middle', get_option('postSettings')); ?> /><div class="switch"></div></label><div class="expand_colorselect"><strong>Color:</strong><br /><input class="transitionBgColor" type="text" name="transitionBgColor" value="<?php echo get_option('transitionBgColor'); ?>"/></div></div> 
                 </fieldset>
             </div>
             <div class="loading_settings_wrapper">
             <h4>Loading Circles</h4>
                 <fieldset id="loadingSettings">
                     <div class="wpt_switch_wrap"><label class="wpt_load_label_">Turn Off: <input class="radio_set" name="loadingSettings" type="radio" value="0" <?php checked('0', get_option('loadingSettings')); ?> /><div class="switch"></div></label></div>
-                    <div class="wpt_switch_wrap"><label class="wpt_load_label_">Basic Circle: <input class="radio_set" name="loadingSettings" type="radio" value="basic-circle" <?php checked('basic-circle', get_option('loadingSettings')); ?> /><div class="switch"></div></label><div class="expand_colorselect">Coming soon!</div></div>
-                    <div class="wpt_switch_wrap"><label class="wpt_load_label_">Two Halves: <input class="radio_set" name="loadingSettings" type="radio" value="two-halfs-circle" <?php checked('two-halfs-circle', get_option('loadingSettings')); ?> /><div class="switch"></div></label><div class="expand_colorselect">Coming soon!</div></div>
-                    <div class="wpt_switch_wrap"><label class="wpt_load_label_">One Quater: <input class="radio_set" name="loadingSettings" type="radio" value="one-quater-circle" <?php checked('one-quater-circle', get_option('loadingSettings')); ?> /><div class="switch"></div></label><div class="expand_colorselect">Coming soon!</div></div>
-                    <div class="wpt_switch_wrap"><label class="wpt_load_label_">Split Circle: <input class="radio_set" name="loadingSettings" type="radio" value="split-circle" <?php checked('split-circle', get_option('loadingSettings')); ?> /><div class="switch"></div></label><div class="expand_colorselect">Coming soon!</div></div>
-                    <div class="wpt_switch_wrap"><label class="wpt_load_label_">Bolt Turn: <input class="radio_set" name="loadingSettings" type="radio" value="split-ring" <?php checked('split-ring', get_option('loadingSettings')); ?> /><div class="switch"></div></label><div class="expand_colorselect">Coming soon!</div></div>
+                    <div class="wpt_switch_wrap"><label class="wpt_load_label_">Basic Circle: <input class="radio_set" name="loadingSettings" type="radio" value="basic-circle" <?php checked('basic-circle', get_option('loadingSettings')); ?> /><div class="switch"></div></label><div class="expand_colorselect"><strong>Color:</strong><br /><input class="loadBgColor" type="text" name="loadBgColor" value="<?php echo get_option('loadBgColor'); ?>"/></div></div>
+                    <div class="wpt_switch_wrap"><label class="wpt_load_label_">Two Halves: <input class="radio_set" name="loadingSettings" type="radio" value="two-halfs-circle" <?php checked('two-halfs-circle', get_option('loadingSettings')); ?> /><div class="switch"></div></label><div class="expand_colorselect"><strong>Color:</strong><br /><input class="loadBgColor" type="text" name="loadBgColor" value="<?php echo get_option('loadBgColor'); ?>"/></div></div>
+                    <div class="wpt_switch_wrap"><label class="wpt_load_label_">One Quater: <input class="radio_set" name="loadingSettings" type="radio" value="one-quater-circle" <?php checked('one-quater-circle', get_option('loadingSettings')); ?> /><div class="switch"></div></label><div class="expand_colorselect"><strong>Color:</strong><br /><input class="loadBgColor" type="text" name="loadBgColor" value="<?php echo get_option('loadBgColor'); ?>"/></div></div>
+                    <div class="wpt_switch_wrap"><label class="wpt_load_label_">Split Circle: <input class="radio_set" name="loadingSettings" type="radio" value="split-circle" <?php checked('split-circle', get_option('loadingSettings')); ?> /><div class="switch"></div></label><div class="expand_colorselect"><strong>Color:</strong><br /><input class="loadBgColor" type="text" name="loadBgColor" value="<?php echo get_option('loadBgColor'); ?>"/></div></div>
+                    <div class="wpt_switch_wrap"><label class="wpt_load_label_">Bolt Turn: <input class="radio_set" name="loadingSettings" type="radio" value="split-ring" <?php checked('split-ring', get_option('loadingSettings')); ?> /><div class="switch"></div></label><div class="expand_colorselect"><strong>Color:</strong><br /><input class="loadBgColor" type="text" name="loadBgColor" value="<?php echo get_option('loadBgColor'); ?>"/></div></div>
                 </fieldset>
             </div>
             <div class="loading_settings_wrapper">
             <h4>Loading Bars</h4>
                 <fieldset id="loadingSettings">
-                    <div class="wpt_switch_wrap"><label class="wpt_load_label_">Three Bars: <input class="radio_set" name="loadingSettings" type="radio" value="three-bars" <?php checked('three-bars', get_option('loadingSettings')); ?> /><div class="switch"></div></label><div class="expand_colorselect">Coming soon!</div></div>
+                    <div class="wpt_switch_wrap"><label class="wpt_load_label_">Three Bars: <input class="radio_set" name="loadingSettings" type="radio" value="three-bars" <?php checked('three-bars', get_option('loadingSettings')); ?> /><div class="switch"></div></label><div class="expand_colorselect"><strong>Color:</strong><br /><input class="loadBgColor" type="text" name="loadBgColor" value="<?php echo get_option('loadBgColor'); ?>"/></div></div>
                 </fieldset>
             </div>
             <h4>Alpha: Ajax Page load Settings</h4><br />
             <div class="wpt_switch_wrap"><label class="wpt_ajax_label_"><p id="lbltxt"></p><input class="radio_ajax_set" name="ajaxSettings" type="checkbox" value="1" <?php checked('1', get_option('ajaxSettings')); ?> /><div class="switch"></div></label></div>
             <label class="darktoggle_switch"><input id="toggle_dark" name="darktoggle" type="checkbox" value="dark" <?php checked('dark', get_option('darktoggle')); ?> /><div class="switch"></div><label>
+            <!--Hidden input field for the color inputs-->
+            <input id="transition-background-color" type="hidden" name="transitionBgColor" value="<?php echo get_option('transitionBgColor'); ?>"/>
+            <input id="loading-color" type="hidden" name="loadBgColor" value="<?php echo get_option('loadBgColor'); ?>"/>
+            
             <?php submit_button(); ?>
         </form>
     <?php }
@@ -107,6 +137,8 @@ if( !function_exists("update_postSettings")) { //Saves the settings that come fr
         register_setting('infoSettings', 'loadingSettings');
         register_setting('infoSettings', 'ajaxSettings');
         register_setting('infoSettings', 'darktoggle');
+        register_setting('infoSettings', 'transitionBgColor');
+        register_setting('infoSettings', 'loadBgColor');
     }
 }
 
@@ -124,6 +156,6 @@ add_filter('plugin_row_meta', 'plugin_meta', 10, 2);
 add_action('wp_head', 'hook_header');
 add_action('wp_enqueue_scripts', 'include_jquery');
 add_action('admin_menu', 'wp_transitions');
-add_action('admin_init', 'update_postSettings');
+add_filter('admin_init', 'update_postSettings');
 add_action('admin_head', 'load_admin_style');
 ?>

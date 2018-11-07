@@ -4,8 +4,8 @@ $(document).ready(function() {
     var pageWrap = "page"; //wordpress wrapper div id
     //console.log(ajaxload);
 
-    if (usersetting.match("^split-mid")) { $("#wpt_loading").addClass("split_ver_wpt_load"); } //Different css class for split div
-    if (usersetting.match("^split-left")) { $("#wpt_loading").addClass("split_hor_wpt_load"); }
+    if (usersetting.match("^split-mid")) { $("#wpt_loading").addClass("split_ver_wpt_load bgoverride"); } //Different css class for split div
+    if (usersetting.match("^split-left")) { $("#wpt_loading").addClass("split_hor_wpt_load bgoverride"); }
     if (loadingsettings != "0") {
         $('#wpt_load_anim').addClass(loadingsettings);
     }

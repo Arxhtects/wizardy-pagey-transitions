@@ -2,6 +2,16 @@ jQuery(document).ready(function() {
     var clicked = false; //variable that is changed if you clicked on the dark toggle
     var $ = jQuery; //change jQuery to $ with use of var
 
+        $(".transitionBgColor").keyup(function(){ 
+            $(".transitionBgColor").val($(this).val());
+            $("#transition-background-color").val($(this).val());
+        });
+
+        $(".loadBgColor").keyup(function() {
+            $(".loadBgColor").val($(this).val());
+            $("#loading-color").val($(this).val());
+        });
+
     if ($("#toggle_dark:checked").length > 0) { //check if the dark switch is already checked.
         $("#wpwrap").addClass("dark"); 
         clicked = true; 

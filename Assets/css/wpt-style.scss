@@ -16,7 +16,6 @@ html, body {
     width: 100%;
     height: 100vh;
     z-index: 9999;
-    background-color: $bgColor;
     -webkit-transition: $transition;
     -moz-transition: $transition;
     -o-transition: $transition;
@@ -34,7 +33,6 @@ html, body {
         left: 0;
         right: 0;
         height: 50vh;
-        background-color: $sbgColor;
         z-index: 999999;
     }
 }
@@ -51,7 +49,6 @@ html, body {
         width: 50vw;
         left: 0;
         height: 100vh;
-        background-color: $sbgColor;
         z-index: 999999;
     }
 }
@@ -101,7 +98,6 @@ html, body {
         height: 75px;
         width: 75px;
         border-radius: 50%;
-        border: solid 5px $loadingColor;
         border-bottom: solid 5px transparent;
         -webkit-animation: spin 0.9s infinite; /* Safari 4+ */
         -moz-animation:    spin 0.9s infinite; /* Fx 5+ */

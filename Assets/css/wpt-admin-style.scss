@@ -163,6 +163,10 @@ h4 {
     #footer-upgrade, #footer-thankyou {
         color: white !important;
     }
+    input {
+        background: $darkslide !important;
+        color: white !important;
+    }
 }
 
 //admin left menu arrow
@@ -183,16 +187,27 @@ h4 {
 
 .expand_colorselect {
     max-height: 0px;
-    overflow: hidden;
     transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+    overflow: hidden;
     &.expand {
         max-height: 1000px;
         transition: max-height 1s ease-in-out;
         overflow: inherit;
     }
     input {
-        width: 180%;
+        outline: none;
+        border-radius: 10px;
+        width: 140%;
         position: relative;
-        left: -20px;
+        left: -10px;
+        border: 0px;
+        padding: 5px;
+        margin-top: 5px;
+        &:active {
+            border: 0;
+        }
+        &::placeholder {
+            color: $offColor;
+        }
     }
 }
