@@ -12,6 +12,16 @@ jQuery(document).ready(function() {
             $("#loading-color").val($(this).val());
         });
 
+        $(".loadBgColor2").keyup(function() {
+            $(".loadBgColor2").val($(this).val());
+            $("#loading-color2").val($(this).val());
+        });
+        
+        $(".loadBgColor3").keyup(function() {
+            $(".loadBgColor3").val($(this).val());
+            $("#loading-color3").val($(this).val());
+        });
+        
     if ($("#toggle_dark:checked").length > 0) { //check if the dark switch is already checked.
         $("#wpwrap").addClass("dark"); 
         clicked = true; 

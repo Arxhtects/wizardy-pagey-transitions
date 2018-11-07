@@ -110,7 +110,6 @@ html, body {
         height: 75px;
         width: 75px;
         border-radius: 50%;
-        border: solid 5px $loadingColor;
         border-bottom: solid 5px transparent;
         border-top: solid 5px transparent;
         -webkit-animation: spin 0.9s infinite; /* Safari 4+ */
@@ -125,7 +124,6 @@ html, body {
         width: 75px;
         border-radius: 50%;
         border: 5px solid rgba(0,0,0,0.2);
-        border-bottom: 5px solid $loadingColor;
         -webkit-animation: spin 0.9s infinite; /* Safari 4+ */
         -moz-animation:    spin 0.9s infinite; /* Fx 5+ */
         -o-animation:      spin 0.9s infinite; /* Opera 12+ */
@@ -138,7 +136,6 @@ html, body {
         width: 75px;
         border-radius: 50%;
         border: 5px solid transparent;
-        border-bottom: 5px solid $loadingColor;
         -webkit-animation: spin 0.9s infinite; /* Safari 4+ */
         -moz-animation:    spin 0.9s infinite; /* Fx 5+ */
         -o-animation:      spin 0.9s infinite; /* Opera 12+ */
@@ -152,7 +149,6 @@ html, body {
             width: 62px;
             border-radius: 50%;
             border: 5px solid transparent;
-            border-top: 5px solid $loadingColor;
             -webkit-animation: spin 0.9s infinite; /* Safari 4+ */
             -moz-animation:    spin 0.9s infinite; /* Fx 5+ */
             -o-animation:      spin 0.9s infinite; /* Opera 12+ */
@@ -166,8 +162,6 @@ html, body {
         width: 75px;
         border-radius: 50%;
         border: 5px solid transparent;
-        border-bottom: 5px solid $loadingColor;
-        border-top: 5px solid $loadingColor;
         -webkit-animation: spin 0.9s infinite; /* Safari 4+ */
         -moz-animation:    spin 0.9s infinite; /* Fx 5+ */
         -o-animation:      spin 0.9s infinite; /* Opera 12+ */
@@ -182,8 +176,6 @@ html, body {
             top: 2px;
             border-radius: 50%;
             border: 5px solid transparent;
-            border-bottom: 5px solid $loadingColor;
-            border-top: 5px solid $loadingColor;
             -webkit-animation: spin 0.9s infinite; /* Safari 4+ */
             -moz-animation:    spin 0.9s infinite; /* Fx 5+ */
             -o-animation:      spin 0.9s infinite; /* Opera 12+ */
@@ -196,7 +188,6 @@ html, body {
         left: calc(50% - 7.5px);
         height: 40px;
         width: 10px;
-        background-color: $loadingColor;
         top: 50%;
         transform: translateY(-50%);
         -webkit-animation: resize_height 0.9s infinite; /* Safari 4+ */
@@ -210,7 +201,6 @@ html, body {
             left: calc(50% + 7.5px);
             height: 40px;
             width: 10px;
-            background-color: $loadingColor;
             top: 50%;
             transform: translateY(-50%);
             -webkit-animation: resize_height 0.9s infinite; /* Safari 4+ */
@@ -225,7 +215,6 @@ html, body {
             left: calc(50% - 17px);
             height: 40px;
             width: 10px;
-            background-color: $loadingColor;
             top: 50%;
             transform: translateY(-50%);
             -webkit-animation: resize_height 0.9s infinite; /* Safari 4+ */

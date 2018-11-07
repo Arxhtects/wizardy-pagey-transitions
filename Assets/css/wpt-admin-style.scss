@@ -189,20 +189,23 @@ h4 {
     max-height: 0px;
     transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
     overflow: hidden;
+    position: relative;
+    width: 175%;
+    left: -35%;
     &.expand {
         max-height: 1000px;
         transition: max-height 1s ease-in-out;
-        overflow: inherit;
+        overflow: hidden;
     }
     input {
         outline: none;
         border-radius: 10px;
-        width: 140%;
+        width: 95%;
         position: relative;
-        left: -10px;
         border: 0px;
         padding: 5px;
         margin-top: 5px;
+        margin-bottom: 5px;
         &:active {
             border: 0;
         }

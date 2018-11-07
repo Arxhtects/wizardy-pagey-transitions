@@ -5,7 +5,7 @@ Plugin URL: https://www.archtects.co.uk
 Description: Wordpress Page Transitions
 Author: Archtects
 Author URL: https://www.archtects.co.uk
-version: 0.69.1 Beta
+version: 0.69.7 Beta
 */
 
 //add the retrived input and apply it to code
@@ -16,9 +16,11 @@ function hook_header() {
     $darktoggle = get_option('darktoggle');
     $transitionBgColor = get_option('transitionBgColor');
     $loadBgColor = get_option('loadBgColor');
-    if ($loadBgColor == null || $loadBgColor == "") {
-        $loadBgColor = "#000";
-    }
+    $loadBgColor2 = get_option('loadBgColor2');
+    $loadBgColor3 = get_option('loadBgColor3');
+    if ($loadBgColor == null || $loadBgColor == "") { $loadBgColor = "#000"; }
+    if ($loadBgColor2 == null || $loadBgColor2 == "") { $loadBgColor2 = "#000"; }
+    if ($loadBgColor3 == null || $loadBgColor3 == "") { $loadBgColor3 = "#000"; }
     if ($transitionBgColor == null || $transitionBgColor == "") {
         $transitionBgColor = "#f2f3f4";
     }?>
@@ -28,8 +30,36 @@ function hook_header() {
         <style>
             <?php if($loadingSettings != "0") { ?>
             .<?php echo $loadingSettings; ?> {
+                <?php if($loadingSettings == "basic-circle" || $loadingSettings == "two-halfs-circle") { ?>
                 border: 5px solid <?php echo $loadBgColor; ?>;
+                <?php } else if($loadingSettings == "one-quater-circle") { ?>
+                border-bottom: 5px solid <?php echo $loadBgColor; ?> !important;
+                <?php } else if($loadingSettings == "split-circle") { ?>
+                border-bottom: 5px solid <?php echo $loadBgColor; ?> !important;
+                <?php } else if($loadingSettings == "split-ring") { ?> 
+                border-bottom: 5px solid <?php echo $loadBgColor; ?> !important;
+                border-top: 5px solid <?php echo $loadBgColor; ?> !important;
+                <?php } else if($loadingSettings == "three-bars") { ?>
+                background-color: <?php echo $loadBgColor; ?>;
+                <?php } ?>
             }
+            <?php if($loadingSettings == "split-circle" || $loadingSettings == "split-ring" || $loadingSettings == "three-bars") { ?>
+                .<?php echo $loadingSettings; ?>::before {
+                    <?php if($loadingSettings == "split-circle") { ?>
+                        border-top: 5px solid <?php echo $loadBgColor2; ?> !important;
+                    <?php } else if($loadingSettings == "split-ring") { ?> 
+                        border-bottom: 5px solid <?php echo $loadBgColor2; ?> !important;
+                        border-top: 5px solid <?php echo $loadBgColor2; ?> !important;
+                    <?php } else if($loadingSettings == "three-bars") { ?> 
+                        background-color: <?php echo $loadBgColor2; ?>;
+                    <?php } ?>
+                }
+            <?php if($loadingSettings == "three-bars") { ?>
+            .three-bars::after {   
+                background-color: <?php echo $loadBgColor3; ?>;
+            }
+            <?php } ?>
+            <?php } ?>
             <?php } ?>
             #wpt_loading {
                 background: <?php echo $transitionBgColor; ?> !important;
@@ -109,14 +139,14 @@ if ( !function_exists("wp_transitions_page")) { //Sets up the option page
                     <div class="wpt_switch_wrap"><label class="wpt_load_label_">Basic Circle: <input class="radio_set" name="loadingSettings" type="radio" value="basic-circle" <?php checked('basic-circle', get_option('loadingSettings')); ?> /><div class="switch"></div></label><div class="expand_colorselect"><strong>Color:</strong><br /><input class="loadBgColor" type="text" name="loadBgColor" value="<?php echo get_option('loadBgColor'); ?>"/></div></div>
                     <div class="wpt_switch_wrap"><label class="wpt_load_label_">Two Halves: <input class="radio_set" name="loadingSettings" type="radio" value="two-halfs-circle" <?php checked('two-halfs-circle', get_option('loadingSettings')); ?> /><div class="switch"></div></label><div class="expand_colorselect"><strong>Color:</strong><br /><input class="loadBgColor" type="text" name="loadBgColor" value="<?php echo get_option('loadBgColor'); ?>"/></div></div>
                     <div class="wpt_switch_wrap"><label class="wpt_load_label_">One Quater: <input class="radio_set" name="loadingSettings" type="radio" value="one-quater-circle" <?php checked('one-quater-circle', get_option('loadingSettings')); ?> /><div class="switch"></div></label><div class="expand_colorselect"><strong>Color:</strong><br /><input class="loadBgColor" type="text" name="loadBgColor" value="<?php echo get_option('loadBgColor'); ?>"/></div></div>
-                    <div class="wpt_switch_wrap"><label class="wpt_load_label_">Split Circle: <input class="radio_set" name="loadingSettings" type="radio" value="split-circle" <?php checked('split-circle', get_option('loadingSettings')); ?> /><div class="switch"></div></label><div class="expand_colorselect"><strong>Color:</strong><br /><input class="loadBgColor" type="text" name="loadBgColor" value="<?php echo get_option('loadBgColor'); ?>"/></div></div>
-                    <div class="wpt_switch_wrap"><label class="wpt_load_label_">Bolt Turn: <input class="radio_set" name="loadingSettings" type="radio" value="split-ring" <?php checked('split-ring', get_option('loadingSettings')); ?> /><div class="switch"></div></label><div class="expand_colorselect"><strong>Color:</strong><br /><input class="loadBgColor" type="text" name="loadBgColor" value="<?php echo get_option('loadBgColor'); ?>"/></div></div>
+                    <div class="wpt_switch_wrap"><label class="wpt_load_label_">Split Circle: <input class="radio_set" name="loadingSettings" type="radio" value="split-circle" <?php checked('split-circle', get_option('loadingSettings')); ?> /><div class="switch"></div></label><div class="expand_colorselect"><strong>Color:</strong><br /><input class="loadBgColor" type="text" name="loadBgColor" value="<?php echo get_option('loadBgColor'); ?>"/> <strong>Color:</strong><br /><input class="loadBgColor2" type="text" name="loadBgColor2" value="<?php echo get_option('loadBgColor2'); ?>"/></div></div>
+                    <div class="wpt_switch_wrap"><label class="wpt_load_label_">Bolt Turn: <input class="radio_set" name="loadingSettings" type="radio" value="split-ring" <?php checked('split-ring', get_option('loadingSettings')); ?> /><div class="switch"></div></label><div class="expand_colorselect"><strong>Color:</strong><br /><input class="loadBgColor" type="text" name="loadBgColor" value="<?php echo get_option('loadBgColor'); ?>"/> <strong>Color:</strong><br /><input class="loadBgColor2" type="text" name="loadBgColor2" value="<?php echo get_option('loadBgColor2'); ?>"/></div></div>
                 </fieldset>
             </div>
             <div class="loading_settings_wrapper">
             <h4>Loading Bars</h4>
                 <fieldset id="loadingSettings">
-                    <div class="wpt_switch_wrap"><label class="wpt_load_label_">Three Bars: <input class="radio_set" name="loadingSettings" type="radio" value="three-bars" <?php checked('three-bars', get_option('loadingSettings')); ?> /><div class="switch"></div></label><div class="expand_colorselect"><strong>Color:</strong><br /><input class="loadBgColor" type="text" name="loadBgColor" value="<?php echo get_option('loadBgColor'); ?>"/></div></div>
+                    <div class="wpt_switch_wrap"><label class="wpt_load_label_">Three Bars: <input class="radio_set" name="loadingSettings" type="radio" value="three-bars" <?php checked('three-bars', get_option('loadingSettings')); ?> /><div class="switch"></div></label><div class="expand_colorselect"><strong>Color:</strong><br /><input class="loadBgColor" type="text" name="loadBgColor" value="<?php echo get_option('loadBgColor'); ?>"/> <strong>Color:</strong><br /><input class="loadBgColor2" type="text" name="loadBgColor2" value="<?php echo get_option('loadBgColor2'); ?>"/> <strong>Color:</strong><br /><input class="loadBgColor3" type="text" name="loadBgColor3" value="<?php echo get_option('loadBgColor3'); ?>"/></div></div>
                 </fieldset>
             </div>
             <h4>Alpha: Ajax Page load Settings</h4><br />
@@ -125,6 +155,8 @@ if ( !function_exists("wp_transitions_page")) { //Sets up the option page
             <!--Hidden input field for the color inputs-->
             <input id="transition-background-color" type="hidden" name="transitionBgColor" value="<?php echo get_option('transitionBgColor'); ?>"/>
             <input id="loading-color" type="hidden" name="loadBgColor" value="<?php echo get_option('loadBgColor'); ?>"/>
+            <input id="loading-color2" type="hidden" name="loadBgColor2" value="<?php echo get_option('loadBgColor2'); ?>"/>
+            <input id="loading-color3" type="hidden" name="loadBgColor3" value="<?php echo get_option('loadBgColor3'); ?>"/>
             
             <?php submit_button(); ?>
         </form>
@@ -139,6 +171,8 @@ if( !function_exists("update_postSettings")) { //Saves the settings that come fr
         register_setting('infoSettings', 'darktoggle');
         register_setting('infoSettings', 'transitionBgColor');
         register_setting('infoSettings', 'loadBgColor');
+        register_setting('infoSettings', 'loadBgColor2');
+        register_setting('infoSettings', 'loadBgColor3');
     }
 }
 
