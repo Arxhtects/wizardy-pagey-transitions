@@ -6,9 +6,9 @@ This is my first plugin for wordpress and is purly designed to be opensource. Th
 # TODO
 - Security enchancements
 - ~~Add Options for different transitions~~
-- Style settings panel
-- Find a way to fetch css colors &/or set your own in settings
-- Add html panel &/or options for setting a loading wheel or other loading things.
+- ~~Style settings panel~~
+- ~~Find a way to fetch css colors &/or set your own in settings~~
+- ~~Add html panel &/or options for setting a loading wheel or other loading things.~~
 - Ajax async pages loading better for wordpress sites.
 
 More todos to be added when I think of them
