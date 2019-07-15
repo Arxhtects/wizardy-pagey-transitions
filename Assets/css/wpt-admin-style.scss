@@ -13,6 +13,12 @@ $lightoffswitch:    #f1f1f1;
 //form style
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
+.travis-img {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
 #wpwrap {   
     transition: $transition;
     font-family: 'Montserrat', sans-serif;

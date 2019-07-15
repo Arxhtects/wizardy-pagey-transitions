@@ -117,6 +117,7 @@ function load_admin_style($hook) {
 #creates page
 if ( !function_exists("wp_transitions_page")) { //Sets up the option page
     function wp_transitions_page() { ?>
+        <a class="travis-img" href="https://travis-ci.org/Arxhtects/wizardy-pagey-transitions" rel="nofollow"><img src="https://camo.githubusercontent.com/5cb4153baf2d80979db199eeed2c0bf3fe1c715f/68747470733a2f2f7472617669732d63692e6f72672f4172786874656374732f77697a617264792d70616765792d7472616e736974696f6e732e7376673f6272616e63683d6d6173746572" alt="Build Status" data-canonical-src="https://travis-ci.org/Arxhtects/wizardy-pagey-transitions.svg?branch=master" style="max-width:100%;"></a>
         <h1>Wizardy Pagey Transitions</h1>
         <form id="wp_transition_settings_form" method="post" action="options.php">
             <?php settings_fields('infoSettings'); //Creates the fields to save to ?> 
