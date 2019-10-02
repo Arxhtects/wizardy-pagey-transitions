@@ -10,6 +10,8 @@ This is my first plugin for wordpress and is purly designed to be opensource. Th
 - ~~Find a way to fetch css colors &/or set your own in settings~~
 - ~~Add html panel &/or options for setting a loading wheel or other loading things.~~
 - Ajax async pages loading better for wordpress sites.
+- Ability to add logos in place of loading.
+- Live View Window.
 
 More todos to be added when I think of them
 
@@ -27,7 +29,7 @@ C/wamp64/www/wordpressplugintest/wp-content/plugins/
 # DEVELOPMENT
 
 Want to contribute? Please Feel Free To Fork Me.
-Visit my [portfolio][arc]
+
 
 # LICENSE
 MIT
@@ -36,4 +38,3 @@ MIT
 ----
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
 
-[arc]: <https://www.archtects.co.uk>
