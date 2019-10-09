@@ -26,7 +26,7 @@ $(document).ready(function() {
     //remove all classes from admin divs/admin links/anchor links.   
     $("#wpadminbar a").removeClass(class_name);
     $("a[href*='wp-']").removeClass(class_name);
-    $("a[href*='#'").removeClass(class_name);
+    $("a[href*='\\#'").removeClass(class_name);
 
     $("."+class_name).click(function() {//page transition after onclick function
         var addressValue = $(this).attr("href"); //gets links value
