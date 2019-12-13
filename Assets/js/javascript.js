@@ -27,6 +27,8 @@ $(document).ready(function() {
     $("#wpadminbar a").removeClass(class_name);
     $("a[href*='wp-']").removeClass(class_name);
     $("a[href*='#']").removeClass(class_name);
+    $("a[href*='tel']").removeClass(class_name);
+    $("a[href*='mailto']").removeClass(class_name);
     $("a[target='_blank']").removeClass(class_name);
 
     $("."+class_name).click(function() {//page transition after onclick function
