@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(window).on('pageshow', function(){
     //class name set here
     var class_name = "transition_link";
     var pageWrap = "page"; //wordpress wrapper div id
