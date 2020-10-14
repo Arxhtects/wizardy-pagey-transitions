@@ -87,7 +87,7 @@ function hook_header() {
 function include_jquery() {
     #Check if Jquery Has been Set
     if ( !wp_script_is('jquery', 'enqueued')) { #TODO ADD JQUERY TO ASSSETS
-        wp_enqueue_script( 'jquery_include', 'https://code.jquery.com/jquery-3.3.1.min.js', array( 'jquery' ) );
+        //wp_enqueue_script( 'jquery_include', 'https://code.jquery.com/jquery-3.3.1.min.js', array( 'jquery' ) );
     }
     wp_enqueue_script('javascript_code', '/wp-content/plugins/wizardy-pagey-transitions/Assets/js/javascript.js');
     wp_enqueue_style('style_code', '/wp-content/plugins/wizardy-pagey-transitions/Assets/css/wpt-style.css');
